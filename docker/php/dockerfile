@@ -1,0 +1,5 @@
+FROM php:7.4.4-fpm-buster
+COPY php.ini /usr/local/etc/php/
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+RUN apt-get update && apt-get install zip unzip libonig-dev
+RUN docker-php-ext-install pdo_mysql mysqli
